@@ -202,13 +202,7 @@ class WizardManager {
 
     async callChatGPT(prompt) {
         try {
-            console.log('Sending request with:', {
-                prompt,
-                projectName: this.projectName,
-                tokenSymbol: this.tokenSymbol
-            });
-
-            const response = await fetch('http://localhost:3000/api/generate', {
+            const response = await fetch('https://your-render-url.onrender.com/api/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -219,10 +213,8 @@ class WizardManager {
                     tokenSymbol: this.tokenSymbol
                 })
             });
-
+    
             const data = await response.json();
-            console.log('Received response:', data);
-
             if (data.text) {
                 return data.text;
             } else {

@@ -4,7 +4,13 @@ const cors = require('cors');
 const { OpenAI } = require('openai');
 
 const app = express();
-app.use(cors());
+
+
+app.use(cors({
+    origin: ['https://stylus-backend.onrender.com', 'http://localhost:5173'],
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 app.use(express.json());
 
 const openai = new OpenAI({
