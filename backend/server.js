@@ -7,7 +7,7 @@ const app = express();
 
 
 app.use(cors({
-    origin: ['https://stylus-backend.onrender.com', 'http://localhost:5173'],
+    origin: ['https://stylus-hl.app', 'http://localhost:5173'],
     methods: ['GET', 'POST'],
     credentials: true
 }));
