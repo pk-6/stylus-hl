@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stylus | Crypto Project Generator</title>
+        <link rel="stylesheet" href="src/styles/main.styl">
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-text">Stylus</span>
+                    <span class="sparkle">✨</span>
+                </div>
+                <div class="social-links">
+                    <a href="https://twitter.com/stylus_virtuals" target="_blank" class="social-link">
+                        𝕏
+                    </a>
+                    <a href="https://gitbook.com/your-docs" target="_blank" class="social-link">
+                        GitBook
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Imagine. Create. Launch.</h1>
+                <p class="hero-subtitle">Generate tokens, branding, and complete documentation in minutes</p>
+                <button class="cta-button" id="startProject">Start Your Project</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="project-wizard" id="projectWizard">
+        <div class="wizard-header">
+            <div class="wizard-steps">
+                <div class="step active" data-step="1">Basics</div>
+                <div class="step" data-step="2">Text Generation</div>
+                <div class="step" data-step="3">Review</div>
+            </div>
+        </div>
+
+        <div class="wizard-content">
+            <!-- Step 1: Basics -->
+            <div class="wizard-step active" data-step="1">
+                <h2>Project Basics</h2>
+                <div class="input-group">
+                    <label for="projectName">Project Name</label>
+                    <input type="text" id="projectName" placeholder="Enter your project name">
+                </div>
+                <div class="input-group">
+                    <label for="tokenSymbol">Token Symbol</label>
+                    <input type="text" id="tokenSymbol" placeholder="e.g., STY" maxlength="5">
+                </div>
+            </div>
+
+            <!-- Step 2: Text Generation -->
+            <div class="wizard-step" data-step="2">
+                <h2>Text Generation</h2>
+                <div class="project-info">
+                    <p>Your project: <span id="projectNameDisplay"></span> (<span id="symbolDisplay"></span>)</p>
+                </div>
+                <div class="input-group">
+                    <label for="promptInput">What text do you want to generate? Tell me what you want in a natural way.</label>
+                    <textarea id="promptInput" placeholder="Example: Write a tweet announcing my token launch" rows="4"></textarea>
+                </div>
+                <div class="generation-content">
+                    <div class="loading-indicator hidden">
+                        <span class="loader"></span>
+                        <p>Generating content...</p>
+                    </div>
+                    <div class="generated-content"></div>
+                </div>
+            </div>
+
+            <!-- Step 3: Review -->
+            <div class="wizard-step" data-step="3">
+                <h2>Review</h2>
+                <div class="review-content">
+                    <div class="review-item">
+                        <h3>Project Name</h3>
+                        <p id="reviewName"></p>
+                    </div>
+                    <div class="review-item">
+                        <h3>Token Symbol</h3>
+                        <p id="reviewSymbol"></p>
+                    </div>
+                    <div class="review-item">
+                        <h3>Generated Text</h3>
+                        <p id="reviewText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-navigation">
+            <button class="nav-button next-button" id="nextButton" disabled>Next</button>
+        </div>
+    </div>
+
+    <div id="background-container"></div>
+    <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>
