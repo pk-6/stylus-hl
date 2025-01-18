@@ -202,10 +202,13 @@ class WizardManager {
 
     async callChatGPT(prompt) {
         try {
-            const response = await fetch('https://your-render-url.onrender.com/api/generate', {
+            console.log('Sending request:', { prompt, projectName: this.projectName, tokenSymbol: this.tokenSymbol });
+    
+            const response = await fetch('https://stylus-hl-backend.onrender.com/api/generate', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
                 body: JSON.stringify({
                     prompt,
@@ -214,18 +217,26 @@ class WizardManager {
                 })
             });
     
+            if (!response.ok) {
+                const errorData = await response.text();
+                console.error('API Error:', errorData);
+                throw new Error(`API error: ${response.status}`);
+            }
+    
             const data = await response.json();
+            console.log('API Response:', data);
+    
             if (data.text) {
                 return data.text;
             } else {
                 throw new Error('No response from API');
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Detailed error:', error);
             throw error;
         }
     }
-}  // Close WizardManager class
+}
 
 // Initialize background and wizard
 const background = new Background();
