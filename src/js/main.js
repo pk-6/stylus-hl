@@ -204,7 +204,7 @@ class WizardManager {
         try {
             console.log('Sending request:', { prompt, projectName: this.projectName, tokenSymbol: this.tokenSymbol });
     
-            const response = await fetch('https://stylus-hl-backend.onrender.com/api/generate', {
+            const response = await fetch('https://stylus-backend.onrender.com/api/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
